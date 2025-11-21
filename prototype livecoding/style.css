@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: skyblue;
+}
+
+h1{
+    text-align: center;
+    padding: 40px;
+    font-size: 50px;
+    margin: 15px auto;
+    width: 40%;
+    border-bottom: solid 6px white;
+    color: white;
+}
+
+.card{
+    background-color: #ffffff;
+    border: 2px solid white;
+    display: inline-block;
+    padding: 15px; 
+    margin: 18px;
+    border-radius: 10px;
+    width: 180px;           
+    text-align: center;     
+    transition: 0.3s;        
+}
+
+.card img {
+    width: 100%;
+    height: 100px;           
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.card:hover {
+    background-color: lightblue;  
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+#select{
+    margin: 20px;
+}

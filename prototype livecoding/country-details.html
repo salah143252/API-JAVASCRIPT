@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="details.css">
+</head>
+<body>
+    <a href="index.html">Home</a>
+    <form id="details"></form>
+
+    <script>
+        let detail = new URLSearchParams(window.location.search);
+        let id = detail.get("id");
+
+        fetch("https://countries-api-hsak.onrender.com/api/countries/" + id)
+            .then(response => response.json())
+            .then(pays => {
+                let container = document.getElementById("details");
+                if(container)container.innerHTML = "";  
+
+                let name = document.createElement("h2");
+                name.innerText = pays.name;
+
+                let capital = document.createElement("p");
+                capital.innerText = "Capital: " + pays.capital;
+
+                let language = document.createElement("p");
+                language.innerText = "Language: " + pays.language;
+
+                let continent = document.createElement("p");
+                continent.innerText = "Continent: " + pays.continent;
+
+                let population = document.createElement("p");
+                population.innerText = "Population: " + pays.population;
+
+                let area = document.createElement("p");
+                area.innerText = "Area: " + pays.area;
+
+                let currency = document.createElement("p");
+                currency.innerText = "Currency: " + pays.currency;
+
+                let timezone = document.createElement("p");
+                timezone.innerText = "Timezone: " + pays.timezone;
+
+                let flag = document.createElement("img");
+                flag.src = pays.flag;
+                flag.alt = pays.name;
+
+                container.appendChild(name);
+                container.appendChild(flag);
+                container.appendChild(capital);
+                container.appendChild(language);
+                container.appendChild(continent);
+                container.appendChild(population);
+                container.appendChild(area);
+                container.appendChild(currency);
+                container.appendChild(timezone);
+
+            })
+            .catch(err => {
+                document.getElementById("details").innerHTML = "<p>Failed to load data.</p>";
+                console.error(err);
+            });
+
+    </script>
+</body>
+</html>
